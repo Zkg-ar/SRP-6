@@ -20,7 +20,7 @@ public class Server {
     private String I;
     private String s;
 
-    private Map<String, Pair<String, BigInteger>> BD = new HashMap<>();
+    private Map<String, Pair<String, BigInteger>> DataBase = new HashMap<>();
 
     public Server(BigInteger N, BigInteger g, BigInteger k) {
         this.N = N;
@@ -28,8 +28,8 @@ public class Server {
         this.k = k;
     }
     public void set_I_s_v(String I, String s, BigInteger v) throws Exception {
-        if (!BD.containsKey(I)) {
-            BD.put(I, new Pair<>(s, v));
+        if (!DataBase.containsKey(I)) {
+            DataBase.put(I, new Pair<>(s, v));
         } else
             throw new Exception();
     }
@@ -55,10 +55,10 @@ public class Server {
     }
 
     public String get_s(String I) throws Exception {
-        if (BD.containsKey(I)) {
+        if (DataBase.containsKey(I)) {
             this.I = I;
-            s = BD.get(this.I).first;
-            v = BD.get(this.I).second;
+            s = DataBase.get(this.I).first;
+            v = DataBase.get(this.I).second;
             return s;
         } else
             throw new Exception();
@@ -77,7 +77,7 @@ public class Server {
             return BigInteger.ZERO;
     }
 
-    private class Pair<A, B> {
+    public class Pair<A, B> {
         A first;
         B second;
 
